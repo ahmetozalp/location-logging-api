@@ -1,0 +1,91 @@
+{
+  "info": {
+    "_postman_id": "location-logging-api-collection",
+    "name": "Location Logging API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get All Areas (Paged)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/areas?page=1&limit=100",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["areas"],
+          "query": [
+            { "key": "page", "value": "1" },
+            { "key": "limit", "value": "100" }
+          ]
+        },
+        "description": "Sayfa bazlı alan listesi. Query parametreleri ile sayfa ve limit ayarlanabilir."
+      },
+      "response": []
+    },
+    {
+      "name": "Create Area",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test Area\",\n  \"polygon\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [[[30.0, 40.0], [30.0, 41.0], [31.0, 41.0], [31.0, 40.0], [30.0, 40.0]]]\n  }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/areas",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["areas"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Logs (Paged)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/logs?page=1&limit=100",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["logs"],
+          "query": [
+            { "key": "page", "value": "1" },
+            { "key": "limit", "value": "100" }
+          ]
+        },
+        "description": "Sayfa bazlı log listesi. En son eklenen kayıtlar ilk gelir. Query parametreleri ile sayfa ve limit ayarlanabilir."
+      },
+      "response": []
+    },
+    {
+      "name": "Send Location (Log if in Area)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": \"test-user-1\",\n  \"latitude\": 40.0,\n  \"longitude\": 30.0\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/locations",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["locations"]
+        }
+      },
+      "response": []
+    }
+  ]
+} 
